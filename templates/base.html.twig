@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+    <nav>
+      <a href='#' class='active'>Accueil</a>
+      <a href='/carte'>Carte</a>
+    </nav>
+        {% block body %}
+          <h1>Hello world</h1>
+        {% endblock %}
+
+        {% block footer %}
+          {% include 'footer.html.twig' %}
+        {% endblock %}
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
+
+<style>
+html, *, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+button {
+  margin: 2rem;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid grey;
+}
+button:hover {
+    cursor: pointer;
+    transition: 1s;
+    background-color: darkgrey;
+}
+ body {
+  text-align: center;
+ }
+ nav {
+    display: flex;
+    justify-content: space-evenly;
+    height: 65px;
+    align-items: center;
+    background-color: green;
+ }
+ nav > a {
+   text-decoration: none;
+   color: salmon;
+   font-weight: 600;
+ }
+ nav > a:hover {
+    transition: 1s;
+    color: aliceblue;
+ }
+ h1 {
+    margin: 3rem;
+ }
+ .active {
+  color: white;
+  text-decoration: underline;
+ }
+</style> 

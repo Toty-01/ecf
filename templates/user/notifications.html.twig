@@ -1,0 +1,53 @@
+
+<h1>Hello {{ user_first_name }}!</h1>
+<p>You have {{ notifications|length }} new notifications.</p>
+  <ol>
+    <li>{{ notifications[0]}}</li>
+    <li>{{ notifications[1]}}</li>
+  </ol>
+<a href='/'>Accueil</a>
+
+<style>
+html, *, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+button {
+  margin: 2rem;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid grey;
+}
+button:hover {
+    cursor: pointer;
+    transition: 1s;
+    background-color: darkgrey;
+}
+ body {
+  text-align: center;
+ }
+ nav {
+    display: flex;
+    justify-content: space-evenly;
+    height: 65px;
+    align-items: center;
+    background-color: green;
+ }
+ nav > a {
+   text-decoration: none;
+   color: salmon;
+   font-weight: 600;
+ }
+ nav > a:hover {
+    transition: 1s;
+    color: aliceblue;
+ }
+ h1 {
+    margin: 3rem;
+ }
+ .active {
+  color: white;
+  text-decoration: underline;
+ }
+</style> 
