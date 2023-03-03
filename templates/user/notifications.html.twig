@@ -1,53 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet" />
+        <title>{% block title %}Quai Antique{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    </head>
+    <body>
+        {% block header %}
+          {% include 'header.html.twig' %}
+        {% endblock %}
 
-<h1>Hello {{ user_first_name }}!</h1>
-<p>You have {{ notifications|length }} new notifications.</p>
-  <ol>
-    <li>{{ notifications[0]}}</li>
-    <li>{{ notifications[1]}}</li>
-  </ol>
-<a href='/'>Accueil</a>
+        {% block body %}
+          <h1 class="mt-5">Carte</h1>
+          <p>You have {{ notifications|length }} new notifications.</p>
+            <p>{{ notifications[0]}}</p>
+            <p>{{ notifications[1]}}</p>
+          <button class="bouton">Appuyer</button>
+        {% endblock %}
+           
+        {% block footer %}
+          {% include 'footer.html.twig' %}
+        {% endblock %}
 
+        {% block javascripts %}
+            <script src="{{ asset('js/main.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>
 <style>
 html, *, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-button {
-  margin: 2rem;
-  padding: 0.6rem;
-  border-radius: 0.5rem;
-  border: 1px solid grey;
-}
-button:hover {
-    cursor: pointer;
-    transition: 1s;
-    background-color: darkgrey;
-}
  body {
   text-align: center;
  }
- nav {
-    display: flex;
-    justify-content: space-evenly;
-    height: 65px;
-    align-items: center;
-    background-color: green;
+ li {
+  list-style-type: none;
  }
- nav > a {
-   text-decoration: none;
-   color: salmon;
-   font-weight: 600;
- }
- nav > a:hover {
-    transition: 1s;
-    color: aliceblue;
+ ul {
+  margin-left: -2rem;
  }
  h1 {
     margin: 3rem;
- }
- .active {
-  color: white;
-  text-decoration: underline;
  }
 </style> 

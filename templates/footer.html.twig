@@ -1,3 +1,101 @@
 {% block footer %}
-  <footer>Credits & copyright</footer>
+  <footer>
+    <div class="foot">
+      <div class="contact">
+        <h4 class="pt-4">Nous Appeler</h4>
+        <div class="text-center pt-4 pb-4">Téléphone : <b style="color:#b9853d;">0600112233</b></div>
+      </div>
+      <section>
+      <h4 class="mt-2 mb-4">Horaires</h4>
+        <div class="horaires">
+          <div class="jours">
+            <div>Mardi :</div>
+            <div>12h - 15h</div>
+            <div>19h - 22h</div>
+          </div>
+            <div class="jours">
+              <div>Mercredi :</div>
+              <div>12h - 15h</div>
+              <div>19h - 22h</div>
+          </div>
+            <div class="jours">
+              <div>Jeudi :</div>
+              <div>12h - 15h</div>
+              <div>19h - 22h</div>
+          </div>
+            <div class="jours">
+              <div>Vendredi :</div>
+              <div>12h - 15h</div>
+              <div>19h - 22h</div>
+          </div>
+            <div class="jours">
+              <div>Samedi :</div>
+              <div>12h - 15h</div>
+              <div>19h - 22h</div>
+          </div>
+            <div class="jours">
+              <div class="text-center">Dimanche : </div>
+              <div>Fermé</div>
+          </div>
+          <div class="jours">
+            <div class="text-center">Lundi : Fermé</div>
+          </div>
+        </div>
+      </section>
+      <div class="copyright text-center mt-3 pb-5">© Site créé et designé par Anthony Cauche</div>
+    </div>
+  </footer>
 {% endblock %}
+
+<style>
+*, html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  /* Palette */
+  --first: #B7AC98;
+  --second: #392B1E;
+  --third: #906427;
+  --fourth: #5A5A5A;
+  --fifth: #DFDFDF;
+  --sixth: #b9853d;
+};
+footer {
+  margin: 0;
+}
+.foot {
+  background-color: var(--fourth);
+  color: #DFDFDF;
+}
+section {
+  color: #DFDFDF;
+  padding: 1rem;
+}
+h4 {
+  color: #b9853d;
+  text-align: center;
+}
+.horaires {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: space-around;
+  gap: 1rem;
+}
+.jours {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 7rem;
+  background-color: #DFDFDF;
+  color: #392B1E;
+  font-weight: 600;
+  border-radius: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  align-items: center;
+  font-size: 1.1rem;
+}
+</style> 

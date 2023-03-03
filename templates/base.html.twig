@@ -2,23 +2,36 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet" />
+        <title>{% block title %}Quai Antique{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     </head>
     <body>
-    <nav>
-      <a href='#' class='active'>Accueil</a>
-      <a href='/carte'>Carte</a>
-    </nav>
-        {% block body %}
-          <h1>Hello world</h1>
+        {% block header %}
+          {% include 'header.html.twig' %}
         {% endblock %}
 
+        {% block body %}
+          <h1 class="mt-5">Quai Antique</h1>
+          <p class="mt-5">Bonjour</p>
+          <i class="fa-sharp fa-solid fa-user"></i>
+          <i class="fa-sharp fa-solid fa-image"></i>
+          <br>
+          <button class="bouton">Réserver une table</button>
+        {% endblock %}
+           
         {% block footer %}
           {% include 'footer.html.twig' %}
         {% endblock %}
 
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('js/main.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
 
@@ -34,6 +47,9 @@ button {
   border-radius: 0.5rem;
   border: 1px solid grey;
 }
+body {
+  min-height: 100vh;
+}
 button:hover {
     cursor: pointer;
     transition: 1s;
@@ -41,18 +57,6 @@ button:hover {
 }
  body {
   text-align: center;
- }
- nav {
-    display: flex;
-    justify-content: space-evenly;
-    height: 65px;
-    align-items: center;
-    background-color: green;
- }
- nav > a {
-   text-decoration: none;
-   color: salmon;
-   font-weight: 600;
  }
  nav > a:hover {
     transition: 1s;

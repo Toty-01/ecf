@@ -1,0 +1,52 @@
+{% block header %}
+    <nav>
+      <img class="logo" src="../images/logo.png" alt="Image Description">
+      <a href="{{path ('home')}}">Accueil</a>
+      <a href="{{path ('carte')}}">Carte</a>
+    </nav>
+{% endblock %}
+
+<style>
+html, *, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  /* Palette */
+  --first: #B7AC98;
+  --second: #392B1E;
+  --third: #906427;
+  --fourth: #5A5A5A;
+  --fifth: #DFDFDF;
+};
+ body {
+  text-align: center;
+ }
+ nav {
+    display: flex;
+    justify-content: space-evenly;
+    height: 65px;
+    align-items: center;
+    background-color: #5A5A5A;
+ }
+ nav > a {
+   text-decoration: none;
+   color: #DFDFDF;
+   font-weight: 600;
+ }
+ nav > a:hover {
+    transition: 1s;
+    color: aliceblue;
+ }
+ h1 {
+    margin: 3rem;
+ }
+ .active {
+  color: white;
+  text-decoration: underline;
+ }
+ .logo {
+  width: 6rem;
+ }
+</style> 
