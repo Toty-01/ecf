@@ -1,8 +1,28 @@
 {% block header %}
-    <nav>
-      <img class="logo" src="../images/logo.png" alt="Image Description">
-      <a href="{{path ('home')}}">Accueil</a>
-      <a href="{{path ('carte')}}">Carte</a>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{{path ('home')}}">
+          <img class="logo" src="images/logo.png" alt="Image Description">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">   
+            <i class="fas fa-bars"></i>
+        </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{{path ('home')}}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{path ('home')}}">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{path ('carte')}}">Carte</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
 {% endblock %}
 
@@ -20,27 +40,32 @@ html, *, body {
   --fourth: #5A5A5A;
   --fifth: #DFDFDF;
 };
- body {
-  text-align: center;
- }
  nav {
-    display: flex;
-    justify-content: space-evenly;
-    height: 65px;
-    align-items: center;
-    background-color: #5A5A5A;
+  display: flex;
+  justify-content: space-evenly;
+  height: auto;
+  align-items: center;
+  background-color: #5A5A5A !important;
  }
- nav > a {
-   text-decoration: none;
-   color: #DFDFDF;
-   font-weight: 600;
+ .navbar-nav {
+  display: flex;
  }
- nav > a:hover {
-    transition: 1s;
-    color: aliceblue;
+ #navbarNav.collapse.navbar-collapse {
+  margin-left: 4rem;
+ }
+ .nav-item {
+  justify-content: center;
+  align-items: center;
+ }
+ .nav-link {
+  color: #392B1E !important;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
  }
  h1 {
-    margin: 3rem;
+  margin: 3rem;
  }
  .active {
   color: white;
@@ -48,5 +73,30 @@ html, *, body {
  }
  .logo {
   width: 6rem;
+  border-radius: 50%;
+  border: 3px solid #906427;
+}
+.fa-bars {
+  margin-top: 0.2rem;
+  color: #DFDFDF !important;
+}
+.navbar-toggler {
+  color: #906427;
+}
+@media screen and (max-width: 800px) {
+ #navbarNav.collapse.navbar-collapse {
+  justify-content: space-evenly;
+  margin-left: auto;
+  justify-content: center;
  }
+ .navbar-nav {
+  display: flex;
+ }
+ .nav-link {
+  text-align: center;
+ }
+ .nav-link:last-child {
+  padding-bottom: 2rem;
+ }
+}
 </style> 
