@@ -47,6 +47,9 @@ html, *, body {
   align-items: center;
   background-color: #5A5A5A !important;
  }
+ .navbar {
+  background-color: #5A5A5A !important;
+ }
  .navbar-nav {
   display: flex;
  }
@@ -58,11 +61,16 @@ html, *, body {
   align-items: center;
  }
  .nav-link {
-  color: #392B1E !important;
+  color: #DFDFDF !important;
   justify-content: center;
+  font-weight: 600;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+ }
+ .nav-link:hover {
+  transition: 1s;
+  color: #B7AC98 !important;
  }
  h1 {
   margin: 3rem;
@@ -83,7 +91,7 @@ html, *, body {
 .navbar-toggler {
   color: #906427;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 920px) {
  #navbarNav.collapse.navbar-collapse {
   justify-content: space-evenly;
   margin-left: auto;

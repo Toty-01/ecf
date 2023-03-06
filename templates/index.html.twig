@@ -2,6 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Le restaurant le 'Quai Antique' est fier de vous accueillir et de vous 
+        préparer des plats d'éxceptions. Dans un cadre idyllique, notre équipe de passionnés saura surprendre et émerveiller vos papilles des dernières tendances gustatives. 
+        On se retrouve très vite pour un moment de convivialité et de partage de goût, de bonne cuisine." />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@300&display=swap" rel="stylesheet">
@@ -9,7 +13,8 @@
         <title>{% block title %}Quai Antique{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap.min.css') }}">
+        <link rel="icon" type="image/png" href="images/logo.png" />
     </head>
     <body>
         {% block header %}
@@ -31,7 +36,7 @@
 
         {% block javascripts %}
             <script src="{{ asset('js/main.js') }}"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
+            <script src="{{ asset('bootstrap/bootstrap.min.js') }}"></script>
         {% endblock %}
     </body>
 </html>
