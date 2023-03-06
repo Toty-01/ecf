@@ -27,7 +27,7 @@
           <i class="fa-sharp fa-solid fa-user"></i>
           <i class="fa-sharp fa-solid fa-image"></i>
           <br>
-          <button class="bouton">Réserver une table</button>
+          <button class="bouton"><a href="{{path ('reservation')}}">Réserver une table</a></button>
         {% endblock %}
            
         {% block footer %}
@@ -70,5 +70,12 @@ button:hover {
  .active {
   color: white;
   text-decoration: underline;
+ }
+ a {
+  text-decoration: none;
+  color: white;
+ }
+ a:hover {
+  color: beige;
  }
 </style> 
