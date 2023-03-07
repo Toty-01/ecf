@@ -1,7 +1,7 @@
 {% block header %}
     <nav class="navbar navbar-expand-lg py-0">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{path ('home')}}">
+        <a class="navbar-brand ancre-logo" href="{{path ('home')}}">
           <img class="logo" src="images/logo.png" alt="Image Description">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,16 +19,19 @@
             </li>
           </ul>
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <button class='boutons'>
-                <a class="nav-link" href="{{path ('app_login')}}">Connexion / inscription</a>
-              </button>
-            </li>
+          {% if app.user %}
             <li class="nav-item">
               <button class='boutons'>
                 <a class="nav-link" href="{{path ('app_logout')}}">Déconnexion</a>
               </button>
             </li>
+            {% else %}
+            <li class="nav-item">
+              <button class='boutons'>
+                <a class="nav-link logout" href="{{path ('app_login')}}">Connexion / inscription</a>
+              </button>
+            </li>
+          {% endif %}
           </ul>
         </div>
       </div>
@@ -76,6 +79,7 @@ html, *, body {
   align-items: center;
   margin-left: 1rem;
   margin-right: auto;
+  border-radius: 1rem;
  }
  .nav-link:hover {
   transition: 1s;
@@ -121,11 +125,16 @@ html, *, body {
   margin-left: auto;
   justify-content: center;
  }
+ button.navbar-toggler {
+  margin-top: 0;
+  margin-bottom: 0;
+ }
  .navbar-nav {
   display: flex;
  }
  .nav-link {
   text-align: center;
+  justify-content: center;
  }
  .nav-link:last-child {
   padding-bottom: 3rem;
@@ -133,6 +142,7 @@ html, *, body {
  .boutons {
   margin-bottom: 3rem;
   margin-left: 3rem;
+  list-style-type: none;
  }
  .boutons a {
   padding-bottom: 0.6rem !important;

@@ -10,28 +10,108 @@
         <div class="horaires">
           <div class="jours">
             <div>Mardi :</div>
-            <div>12h - 15h</div>
-            <div>19h - 22h</div>
+            <div>
+              {% for restau in restaurant %}
+                {{ restau.ouvMidi }}
+              {% endfor %} 
+               - 
+              {% for restau in restaurant %}
+                {{ restau.fermMidi }}
+              {% endfor %}
+            </div>
+              <div>
+                {% for restau in restaurant %}
+                  {{ restau.ouvSoir }}
+                {% endfor %} 
+                - 
+                {% for restau in restaurant %}
+                  {{ restau.fermSoir }}
+                {% endfor %}
+              </div>
           </div>
             <div class="jours">
               <div>Mercredi :</div>
-              <div>12h - 15h</div>
-              <div>19h - 22h</div>
+              <div>
+                {% for restau in restaurant %}
+                  {{ restau.ouvMidi }}
+                {% endfor %} 
+                - 
+                {% for restau in restaurant %}
+                  {{ restau.fermMidi }}
+                {% endfor %}
+              </div>
+              <div>
+                {% for restau in restaurant %}
+                  {{ restau.ouvSoir }}
+                {% endfor %} 
+                - 
+                {% for restau in restaurant %}
+                  {{ restau.fermSoir }}
+                {% endfor %}
+              </div>
           </div>
             <div class="jours">
               <div>Jeudi :</div>
-              <div>12h - 15h</div>
-              <div>19h - 22h</div>
+              <div> 
+                {% for restau in restaurant %}
+                  {{ restau.ouvMidi }}
+                {% endfor %}
+                - 
+                {% for restau in restaurant %}
+                  {{ restau.fermMidi }}
+                {% endfor %}
+              </div>
+              <div>
+                {% for restau in restaurant %}
+                  {{ restau.ouvSoir }}
+                {% endfor %} 
+                - 
+                {% for restau in restaurant %}
+                  {{ restau.fermSoir }}
+                {% endfor %}
+              </div>
           </div>
             <div class="jours">
               <div>Vendredi :</div>
-              <div>12h - 15h</div>
-              <div>19h - 22h</div>
+              <div>
+              {% for restau in restaurant %}
+                {{ restau.ouvMidi }}
+              {% endfor %}
+               - 
+              {% for restau in restaurant %}
+                {{ restau.fermMidi }}
+              {% endfor %}
+              </div>
+              <div>
+                {% for restau in restaurant %}
+                  {{ restau.ouvSoir }}
+                {% endfor %} 
+                - 
+                {% for restau in restaurant %}
+                  {{ restau.fermSoir }}
+                {% endfor %}
+              </div>
           </div>
             <div class="jours">
               <div>Samedi :</div>
-              <div>12h - 15h</div>
-              <div>19h - 22h</div>
+              <div>
+              {% for restau in restaurant %}
+                {{ restau.ouvMidi }}
+              {% endfor %} 
+              - 
+              {% for restau in restaurant %}
+                {{ restau.fermMidi }}
+              {% endfor %}
+              </div>
+              <div>
+                {% for restau in restaurant %}
+                  {{ restau.ouvSoir }}
+                {% endfor %} 
+                - 
+                {% for restau in restaurant %}
+                  {{ restau.fermSoir }}
+                {% endfor %}
+              </div>
           </div>
             <div class="jours">
               <div class="text-center">Dimanche : </div>

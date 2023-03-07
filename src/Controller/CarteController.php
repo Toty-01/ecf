@@ -2,6 +2,7 @@
 // src/Controller/UserController.php
 namespace App\Controller;
 
+use App\Repository\RestaurantRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,7 +11,7 @@ class CarteController extends AbstractController
 {
   #[Route('/carte', name: 'carte')]
 
-    public function notifications(): Response
+    public function notifications(RestaurantRepository $restaurantRepository): Response
     {
         // get the user information and notifications somehow
         $userFirstName = 'Toto';
@@ -23,6 +24,8 @@ class CarteController extends AbstractController
             // (Twig recommends using snake_case variable names: 'foo_bar' instead of 'fooBar')
             'user_first_name' => $userFirstName,
             'notifications' => $userNotifications,
+            'restaurant' => $restaurantRepository->findBy([],
+            ['ouv_midi' => 'asc'])
         ]);
     }
 }

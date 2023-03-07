@@ -1,38 +1,74 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet" />
-    <title>Quai Antique</title>
-    {% block stylesheets %}{% endblock %}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-        <link rel="icon" type="image/png" href="images/logo.png" />
-</head>
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% extends "index.html.twig" %}
 
-{% block header %}
-    {% include 'header.html.twig' %}
-{% endblock %}
+{% block body %}
 
 <div class="example-wrapper">
     <h1 class="text-center">Réservation</h1>
+    <label class="mb-2 ">Nombre de couverts</label>
+    <div class="input-group mb-5 w-75 mx-auto">
+    <span class="input-group-text"><i class="fa-solid fa-person"></i></span>
+    <select class="form-select" aria-label="Default select example">
+        <option selected value="1">1</option>
+        <option class="numero" value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+    </select>
+    
+</div>
+   <div>
+    <label class="mb-2 ">Heure d'arrivée</label>
+    <div class="input-group mb-5 w-75 mx-auto">
+    <span class="input-group-text"><i class="fa-solid fa-hourglass-start"></i></span>
+    <select class="form-select" aria-label="Default select example">
+      <option selected>Choisir horaire</option>
+      <option value="12h15">12h15</option>
+      <option value="12h30">12h30</option>
+      <option value="12h45">12h45</option>
+      <option value="13h00">13h00</option>
+      <option value="13h15">13h15</option>
+      <option value="13h30">13h30</option>
+      <option value="13h45">13h45</option>
+      <option value="14h00">14h00</option>
+      <option value="19h15">19h15</option>
+      <option value="19h30">19h30</option>
+      <option value="19h45">19h45</option>
+      <option value="20h00">20h00</option>
+      <option value="20h15">20h15</option>
+      <option value="20h30">20h30</option>
+      <option value="20h45">20h45</option>
+      <option value="21h00">21h00</option>
+    </select>
+   </div>
 
+    <div class="mb-5">
+      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+      <textarea class="form-control w-75 mx-auto" id="exampleFormControlTextarea1" rows="2"></textarea>
+    </div>
 </div>
 
-    {% block footer %}
-        {% include 'footer.html.twig' %}
-    {% endblock %}
+{% endblock %}
 
-    {% block javascripts %}
-        <script src="{{ asset('js/main.js') }}"></script>
-        <script src="{{ asset('bootstrap/bootstrap.min.js') }}"></script>
-    {% endblock %}
 
+{% block stylesheets %}
+  <style>
+    select {
+        color: white !important;
+        background-color: grey !important;
+    }
+    
+    select:hover {
+        cursor: pointer;
+    }
+  </style>
 {% endblock %}
