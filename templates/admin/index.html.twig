@@ -1,87 +1,64 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Le restaurant le 'Quai Antique' est fier de vous accueillir et de vous 
-        préparer des plats d'éxceptions. Dans un cadre idyllique, notre équipe de passionnés saura surprendre et émerveiller vos papilles des dernières tendances gustatives. 
-        On se retrouve très vite pour un moment de convivialité et de partage de goût, de bonne cuisine." />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@300&display=swap" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet" />
-        <title>{% block title %}Quai Antique{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-        <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap.min.css') }}">
-        <link rel="icon" type="image/png" href="images/logo.png" />
-    </head>
-    <body>
-        {% block header %}
-          {% include 'header.html.twig' %}
-        {% endblock %}
+{% extends "index.html.twig" %}
 
-        {% block body %}
-          <h1 class="mt-5">Espace d'administration</h1>
-          <p class="mt-5">Bonjour</p>
-          <i class="fa-sharp fa-solid fa-user"></i>
-          <i class="fa-sharp fa-solid fa-image"></i>
-          <br>
-          <button class="bouton">
-            {% if app.user %}
-              <a href="{{path ('reservation')}}">Réserver une table</a>
-            {% else %}
-              <a href="{{path ('app_login')}}">Réserver une table</a>
-            {% endif %}
-          </button>
-        {% endblock %}
-           
-        {% block footer %}
-          {% include 'footer.html.twig' %}
-        {% endblock %}
+  {% block body %}
+    <h1 class="mt-5">Espace d'administration</h1>
+    <h2 class="mb-5">Bienvenue sur la page d'administration<h2>
+    
+    <h3 class="mb-5">Horaires</h3>
+    
+    {% include "admin/_form.html.twig" %}
+    
+    <hr class="mb-5 w-50 mx-auto">
+    
+    <h3 class="mb-5">galerie</h3>
+    
+    {% include "admin/galerie_form.html.twig" %}
+    
+    <hr class="mb-5 w-50 mx-auto">
 
-        {% block javascripts %}
-            <script src="{{ asset('js/main.js') }}"></script>
-            <script src="{{ asset('bootstrap/bootstrap.min.js') }}"></script>
-        {% endblock %}
-    </body>
-</html>
+    <h3 class="mb-5">Carte</h3>
+    
+    {% include "admin/_carte.form.html.twig" %}
 
+    <hr class="mb-5 w-50 mx-auto">
+
+    <h3 class="mb-5">Réservations</h3>
+
+      {% for reservations in reservation %}
+      <div class="reservation-cards mb-3">
+      <div class="card mb-3 pb-3" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title">
+          {{ reservations.id }} {{ reservations.nom }}
+        </h5>
+        <p class="card-text">
+          Le {{ reservations.date|date('d-m-Y') }} à 
+          {{ reservations.heure|date('h:i') }}
+        <br>
+          Couverts : {{ reservations.couverts }}
+        <br>
+          Allergies : {{ reservations.allergie }}
+        </p>
+          <a href="" class="bouton">Supprimer</a>
+        </div>
+      </div>
+      </div>
+    {% endfor %}
+  {% endblock %}
+        
+{% block stylesheets %}   
 <style>
-html, *, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-button {
-  margin: 2rem;
-  padding: 0.6rem;
-  border-radius: 0.5rem;
-  border: 1px solid grey;
-}
-body {
-  min-height: 100vh;
-}
-button:hover {
-    cursor: pointer;
-    transition: 1s;
-    background-color: darkgrey;
-}
- body {
-  text-align: center;
- }
- h1 {
-    margin: 3rem;
- }
- .active {
-  color: white;
-  text-decoration: underline;
- }
- a {
-  text-decoration: none;
-  color: white;
- }
- a:hover {
-  color: beige;
- }
-</style> 
+  .reservation-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: auto;
+  }
+  .card {
+    flex-wrap: wrap;
+
+  }
+</style>
+
+
+{% endblock %}

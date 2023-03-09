@@ -40,8 +40,10 @@
           {% include 'footer.html.twig' %}
         {% endblock %}
 
+		    {% include "_flash.html.twig" %}
+
         {% block javascripts %}
-            <script src="{{ asset('js/main.js') }}"></script>
+            <script src="{{ asset('script/script.js') }}"></script>
             <script src="{{ asset('bootstrap/bootstrap.min.js') }}"></script>
         {% endblock %}
     </body>

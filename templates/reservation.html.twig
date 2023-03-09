@@ -4,58 +4,9 @@
 
 <div class="example-wrapper">
     <h1 class="text-center">Réservation</h1>
-    <label class="mb-2 ">Nombre de couverts</label>
-    <div class="input-group mb-5 w-75 mx-auto">
-    <span class="input-group-text"><i class="fa-solid fa-person"></i></span>
-    <select class="form-select" aria-label="Default select example">
-        <option selected value="1">1</option>
-        <option class="numero" value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-    </select>
-    
+{% include "_reservation.form.html.twig" %}
 </div>
-   <div>
-    <label class="mb-2 ">Heure d'arrivée</label>
-    <div class="input-group mb-5 w-75 mx-auto">
-    <span class="input-group-text"><i class="fa-solid fa-hourglass-start"></i></span>
-    <select class="form-select" aria-label="Default select example">
-      <option selected>Choisir horaire</option>
-      <option value="12h15">12h15</option>
-      <option value="12h30">12h30</option>
-      <option value="12h45">12h45</option>
-      <option value="13h00">13h00</option>
-      <option value="13h15">13h15</option>
-      <option value="13h30">13h30</option>
-      <option value="13h45">13h45</option>
-      <option value="14h00">14h00</option>
-      <option value="19h15">19h15</option>
-      <option value="19h30">19h30</option>
-      <option value="19h45">19h45</option>
-      <option value="20h00">20h00</option>
-      <option value="20h15">20h15</option>
-      <option value="20h30">20h30</option>
-      <option value="20h45">20h45</option>
-      <option value="21h00">21h00</option>
-    </select>
-   </div>
 
-    <div class="mb-5">
-      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-      <textarea class="form-control w-75 mx-auto" id="exampleFormControlTextarea1" rows="2"></textarea>
-    </div>
-</div>
 
 {% endblock %}
 
