@@ -3,33 +3,68 @@
   {% block body %}
     <h1 class="mt-5">Carte</h1>
     <p>Bienvenue sur la Page. Retrouvez notre carte, nos menus et tarifs</p>
-  
-  {% for menus in menu %}
-  <div class="reservation-cards mb-3">
-  <div class="card mb-3 pb-3" style="width: 18rem;">
-    <div class="card-body">
-    <h5 class="card-title">
-      {{ menus.nom }} - {{ menus.formule }}
-    </h5>
-    <p class="card-text">
-      {{ menus.validite }}
-      {{ menus.description }}
-    <br>
-      Prix : {{ menus.prix }}
-    </p>
-    </div>
-  </div>
-  </div>
-{% endfor %}
+    <h2 class='text-center'>Nos plats</h2>
     <button class="bouton">Appuyer</button>
+
+    <h2 class='text-center'>Nos menus</h2>
+    {% for menus in menu %}
+      
+      <div class="reservation-cards mb-3 mt-5">
+        <div class="card mb-3 pb-3">
+          <div class="card-body">
+          <h3 class="card-title mt-4">
+            {{ menus.nom }}
+          </h3>
+          <h4 class="mt-4">
+            {{ menus.formule|upper }}
+          </h4>
+          <p class="card-text"> 
+            ( {{ menus.validite }} )
+          </p>
+          <p class="card-text bold">
+            {{ menus.description }}
+          </p>
+          <p class="card-text mt-4 bold mb-4">
+            Prix : {{ menus.prix }} €
+          </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    
+    <button class="bouton mb-5">
+      {% if app.user %}
+        <a href="{{path ('reservation')}}">Réserver une table</a>
+      {% else %}
+        <a href="{{path ('app_login')}}">Réserver une table</a>
+      {% endif %}
+    </button>
 
   {% endblock %}
            
 
 {% block stylesheets %}
   <style>
+    .reservation-cards {
+      display: flex;
+      justify-content: center;
+    }
+    .card {
+      width: 90%;
+      background-color: #DFDFDF !important;
+      border: 2px solid #FFEBB4 !important;
+    }
+    .reservation-cards h3 {
+      color: #906427;
+    }
+    .bold {
+      font-weight: bold !important;
+    }
     a {
       
+    }
+    .card-body h4 {
+      font-size: 1.2rem;
     }
   </style>
 {% endblock %}
