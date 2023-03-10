@@ -17,7 +17,22 @@ class MenuFormType extends AbstractType
                 'class' => 'form-control w-75 mx-auto'
                 ]
             ])
-            ->add('formules', options: [
+            ->add('formule', options: [
+                'attr' => [
+                'class' => 'form-control w-75 mx-auto'
+                ]
+            ])
+            ->add('validite', options: [
+                'attr' => [
+                'class' => 'form-control w-75 mx-auto'
+                ]
+            ])
+            ->add('description', options: [
+                'attr' => [
+                'class' => 'form-control w-75 mx-auto'
+                ]
+            ])
+            ->add('prix', options: [
                 'attr' => [
                 'class' => 'form-control w-75 mx-auto'
                 ]

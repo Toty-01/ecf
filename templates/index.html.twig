@@ -20,11 +20,13 @@
         {% block header %}
           {% include 'header.html.twig' %}
         {% endblock %}
+        {#{% include "_flash.html.twig" %}#}
 
         {% block body %}
           <h1 class="mt-5">Quai Antique</h1>
           <h2 class="mt-5">Bienvenue sur notre site</h2>
           <br>
+          
           <button class="bouton">
             {% if app.user %}
               <a href="{{path ('reservation')}}">Réserver une table</a>

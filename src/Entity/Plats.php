@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\PlatsRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PlatsRepository::class)]
@@ -24,13 +22,8 @@ class Plats
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\ManyToMany(targetEntity: Ingredients::class, mappedBy: 'plats')]
-    private Collection $ingredients;
-
-    public function __construct()
-    {
-        $this->ingredients = new ArrayCollection();
-    }
+    #[ORM\Column(length: 255)]
+    private ?string $ingredients = null;
 
     public function getId(): ?int
     {
@@ -73,30 +66,16 @@ class Plats
         return $this;
     }
 
-    /**
-     * @return Collection<int, Ingredients>
-     */
-    public function getIngredients(): Collection
+    public function getIngredients(): ?string
     {
         return $this->ingredients;
     }
 
-    public function addIngredient(Ingredients $ingredient): self
+    public function setIngredients(string $ingredients): self
     {
-        if (!$this->ingredients->contains($ingredient)) {
-            $this->ingredients->add($ingredient);
-            $ingredient->addPlat($this);
-        }
+        $this->ingredients = $ingredients;
 
         return $this;
     }
 
-    public function removeIngredient(Ingredients $ingredient): self
-    {
-        if ($this->ingredients->removeElement($ingredient)) {
-            $ingredient->removePlat($this);
-        }
-
-        return $this;
-    }
 }

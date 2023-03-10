@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\MenuRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MenuRepository::class)]
@@ -18,13 +16,17 @@ class Menu
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\ManyToMany(targetEntity: Formule::class, mappedBy: 'menu')]
-    private Collection $formules;
+    #[ORM\Column(length: 255)]
+    private ?string $formule = null;
 
-    public function __construct()
-    {
-        $this->formules = new ArrayCollection();
-    }
+    #[ORM\Column(length: 255)]
+    private ?string $validite = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $description = null;
+
+    #[ORM\Column]
+    private ?float $prix = null;
 
     public function getId(): ?int
     {
@@ -43,29 +45,51 @@ class Menu
         return $this;
     }
 
-    /**
-     * @return Collection<int, Formule>
-     */
-    public function getFormules(): Collection
+    public function getFormule(): ?string
     {
-        return $this->formules;
+        return $this->formule;
     }
 
-    public function addFormule(Formule $formule): self
+    public function setFormule(string $formule): self
     {
-        if (!$this->formules->contains($formule)) {
-            $this->formules->add($formule);
-            $formule->addMenu($this);
-        }
+        $this->formule = $formule;
 
         return $this;
     }
 
-    public function removeFormule(Formule $formule): self
+    public function getValidite(): ?string
     {
-        if ($this->formules->removeElement($formule)) {
-            $formule->removeMenu($this);
-        }
+        return $this->validite;
+    }
+
+    public function setValidite(string $validite): self
+    {
+        $this->validite = $validite;
+
+        return $this;
+    }
+    
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+    
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(float $prix): self
+    {
+        $this->prix = $prix;
 
         return $this;
     }

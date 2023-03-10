@@ -5,20 +5,22 @@
     <h2 class="mb-5">Bienvenue sur la page d'administration<h2>
     
     <h3 class="mb-5">Horaires</h3>
-    
     {% include "admin/_form.html.twig" %}
     
     <hr class="mb-5 w-50 mx-auto">
     
     <h3 class="mb-5">galerie</h3>
-    
     {% include "admin/galerie_form.html.twig" %}
     
     <hr class="mb-5 w-50 mx-auto">
 
     <h3 class="mb-5">Carte</h3>
-    
     {% include "admin/_carte.form.html.twig" %}
+
+    <hr class="mb-5 w-50 mx-auto">
+
+    <h3 class="mb-5">Menu</h3>
+    {% include "admin/_menu.form.html.twig" %}
 
     <hr class="mb-5 w-50 mx-auto">
 
@@ -29,7 +31,7 @@
       <div class="card mb-3 pb-3" style="width: 18rem;">
         <div class="card-body">
         <h5 class="card-title">
-          {{ reservations.id }} {{ reservations.nom }}
+          {{ reservations.id }} - {{ reservations.nom }}
         </h5>
         <p class="card-text">
           Le {{ reservations.date|date('d-m-Y') }} à 
@@ -56,7 +58,8 @@
   }
   .card {
     flex-wrap: wrap;
-
+  }
+  .card-body {
   }
 </style>
 

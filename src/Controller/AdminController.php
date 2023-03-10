@@ -3,11 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Galerie;
+use App\Entity\Menu;
 use App\Entity\Plats;
 use App\Entity\Restaurant;
 use App\Form\CarteFormType;
 use App\Form\HorairesFormType;
 use App\Form\GalerieFormType;
+use App\Form\MenuFormType;
 use App\Repository\ReservationRepository;
 use App\Repository\RestaurantRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -26,10 +28,38 @@ class AdminController extends AbstractController
         $restaurant = new Restaurant();
         $galerie = new Galerie();
         $carte = new Plats();
+        $menu = new Menu();
         $horairesform = $this->createForm(HorairesFormType::class, $restaurant);
         $galerieform = $this->createForm(GalerieFormType::class, $galerie);
         $carteform = $this->createForm(CarteFormType::class, $carte);
+        $menuform = $this->createForm(MenuFormType::class, $menu);
+
+
+        // FORMULAIRE DES HORAIRES
+        $horairesform->handleRequest($request);
+
+        if($horairesform->isSubmitted() && $horairesform->isValid()){
+            $em->persist($restaurant);
+            $em->flush();
+
+            $this-> addFlash('success', "Changement horaire éffectuée");
+            
+            return $this->redirectToRoute("app_admin");
+        }
         
+        // FORMULAIRE DE LA GALERIE
+        $galerieform->handleRequest($request);
+
+        if($galerieform->isSubmitted() && $galerieform->isValid()){
+            $em->persist($galerie);
+            $em->flush();
+
+            $this-> addFlash('success', "réservation éffectuée");
+
+            return $this->redirectToRoute("app_admin");
+        }
+
+        // FORMULAIRE DE LA CARTE
         $carteform->handleRequest($request);
 
         if($carteform->isSubmitted() && $carteform->isValid()){
@@ -38,13 +68,26 @@ class AdminController extends AbstractController
 
             $this-> addFlash('success', "réservation éffectuée");
 
-            return $this->redirectToRoute("carte");
+            return $this->redirectToRoute("app_admin");
+        }
+
+        // FORMULAIRE DU MENU
+        $menuform->handleRequest($request);
+
+        if($menuform->isSubmitted() && $menuform->isValid()){
+            $em->persist($menu);
+            $em->flush();
+
+            $this-> addFlash('success', "réservation éffectuée");
+
+            return $this->redirectToRoute("app_admin");
         }
 
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
             'horairesform' => $horairesform->createView(),
             'carteform' => $carteform->createView(),
+            'menuform' => $menuform->createView(),
             'galerieform' => $galerieform->createView(),
             'reservation' => $reservationRepository->findBy([],
             ['date' => 'asc']),

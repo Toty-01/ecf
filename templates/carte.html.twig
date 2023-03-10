@@ -2,8 +2,27 @@
 
   {% block body %}
     <h1 class="mt-5">Carte</h1>
-    <p>Bienvenue sur la Page. Retrouvez nos cartes, menus et tarifs</p>
+    <p>Bienvenue sur la Page. Retrouvez notre carte, nos menus et tarifs</p>
+  
+  {% for menus in menu %}
+  <div class="reservation-cards mb-3">
+  <div class="card mb-3 pb-3" style="width: 18rem;">
+    <div class="card-body">
+    <h5 class="card-title">
+      {{ menus.nom }} - {{ menus.formule }}
+    </h5>
+    <p class="card-text">
+      {{ menus.validite }}
+      {{ menus.description }}
+    <br>
+      Prix : {{ menus.prix }}
+    </p>
+    </div>
+  </div>
+  </div>
+{% endfor %}
     <button class="bouton">Appuyer</button>
+
   {% endblock %}
            
 
