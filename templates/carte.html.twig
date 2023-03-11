@@ -4,12 +4,37 @@
     <h1 class="mt-5">Carte</h1>
     <p>Bienvenue sur la Page. Retrouvez notre carte, nos menus et tarifs</p>
     <h2 class='text-center'>Nos plats</h2>
+
+
+    <div id="myBtnContainer">
+      <button class="bton acti" onclick="filterSelection('all')"> Show all</button>
+      <button class="bton" onclick="filterSelection('cars')"> Cars</button>
+      <button class="bton" onclick="filterSelection('animals')"> Animals</button>
+      <button class="bton" onclick="filterSelection('fruits')"> Fruits</button>
+      <button class="bton" onclick="filterSelection('colors')"> Colors</button>
+    </div>
+
+    <div class="container">
+      <div class="filterDiv cars">BMW</div>
+      <div class="filterDiv colors fruits">Orange</div>
+      <div class="filterDiv cars">Volvo</div>
+      <div class="filterDiv colors">Red</div>
+      <div class="filterDiv cars animals">Mustang</div>
+      <div class="filterDiv colors">Blue</div>
+      <div class="filterDiv animals">Cat</div>
+      <div class="filterDiv animals">Dog</div>
+      <div class="filterDiv fruits">Melon</div>
+      <div class="filterDiv fruits animals">Kiwi</div>
+      <div class="filterDiv fruits">Banana</div>
+      <div class="filterDiv fruits">Lemon</div>
+      <div class="filterDiv animals">Cow</div>
+    </div>
     <button class="bouton">Appuyer</button>
 
     <h2 class='text-center'>Nos menus</h2>
+
     {% for menus in menu %}
-      
-      <div class="reservation-cards mb-3 mt-5">
+      <div class="reservation-cards mb-3 mt-5 mx-auto">
         <div class="card mb-3 pb-3">
           <div class="card-body">
           <h3 class="card-title mt-4">
@@ -40,6 +65,7 @@
       {% endif %}
     </button>
 
+
   {% endblock %}
            
 
@@ -48,6 +74,7 @@
     .reservation-cards {
       display: flex;
       justify-content: center;
+      max-width: 700px;
     }
     .card {
       width: 90%;
@@ -66,5 +93,38 @@
     .card-body h4 {
       font-size: 1.2rem;
     }
+
+.filterDiv {
+  float: left;
+  background-color: #2196F3;
+  color: #ffffff;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+  margin: 2px;
+  display: none;
+}
+.show {
+  display: block;
+}
+.container {
+  margin-top: 20px;
+  overflow: hidden;
+}
+/* Style the buttons */
+.bton {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+.bton:hover {
+  background-color: #ddd;
+}
+.bton.acti {
+  background-color: #666;
+  color: white;
+}
   </style>
 {% endblock %}
