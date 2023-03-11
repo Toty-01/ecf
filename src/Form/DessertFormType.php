@@ -2,13 +2,12 @@
 
 namespace App\Form;
 
-use App\Entity\Plats;
+use App\Entity\Dessert;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CarteFormType extends AbstractType
+class DessertFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -39,7 +38,7 @@ class CarteFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Plats::class,
+            'data_class' => Dessert::class,
         ]);
     }
 }

@@ -6,7 +6,7 @@ use App\Repository\PlatsRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PlatsRepository::class)]
-class Plats
+class Entree
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
