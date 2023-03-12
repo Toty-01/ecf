@@ -1,40 +1,101 @@
 {% extends "index.html.twig" %}
 
   {% block body %}
-    <h1 class="mt-5">Carte</h1>
-    <p>Bienvenue sur la Page. Retrouvez notre carte, nos menus et tarifs</p>
-    <h2 class='text-center'>Nos plats</h2>
-
+    <h1 class="titre">Carte</h1>
+    
+    <p class="sous-titre">Retrouvez ici notre carte, nos menus et tarifs</p>
+    <hr class="my-5 w-50 mx-auto">
+    <h2 class='text-center my-5'>Nos plats</h2>
 
     <div id="myBtnContainer">
-      <button class="bton acti" onclick="filterSelection('all')"> Show all</button>
-      <button class="bton" onclick="filterSelection('cars')"> Cars</button>
-      <button class="bton" onclick="filterSelection('animals')"> Animals</button>
-      <button class="bton" onclick="filterSelection('fruits')"> Fruits</button>
-      <button class="bton" onclick="filterSelection('colors')"> Colors</button>
+      <button class="bton activ" onclick="filterSelection('all')"> Voir tout</button>
+      <button class="bton" onclick="filterSelection('entrées')"> Entrées</button>
+      <button class="bton" onclick="filterSelection('plats')"> Plats</button>
+      <button class="bton" onclick="filterSelection('désserts')"> Désserts</button>
     </div>
 
-    <div class="container">
-      <div class="filterDiv cars">BMW</div>
-      <div class="filterDiv colors fruits">Orange</div>
-      <div class="filterDiv cars">Volvo</div>
-      <div class="filterDiv colors">Red</div>
-      <div class="filterDiv cars animals">Mustang</div>
-      <div class="filterDiv colors">Blue</div>
-      <div class="filterDiv animals">Cat</div>
-      <div class="filterDiv animals">Dog</div>
-      <div class="filterDiv fruits">Melon</div>
-      <div class="filterDiv fruits animals">Kiwi</div>
-      <div class="filterDiv fruits">Banana</div>
-      <div class="filterDiv fruits">Lemon</div>
-      <div class="filterDiv animals">Cow</div>
+    <div class="container">    
+    {% for entree in entrees %}
+      <div class="reservation-cards mb-3 mt-5 mx-auto filterDiv entrées">
+        <div class="card mb-3 pb-3 mx-auto bg">
+          <div class="card-body">
+          <h3 class="card-title mt-4">
+            {{ entree.nom|capitalize }}
+          </h3>
+          <p class="card-text bold mt-4 prix"> 
+            Prix : {{ entree.prix }} €
+          </p>
+          <p class="card-text bold my-4 txt"> 
+            {{ entree.description|capitalize }}
+          </p>
+          <p class="card-text"> 
+          </p>
+          <p class="card-text  desc">
+            Ingrédients : {{ entree.ingredients }}
+          </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+    {% for plat in plats %}
+      <div class="reservation-cards mb-3 mt-5 mx-auto filterDiv plats">
+        <div class="card mb-3 pb-3 mx-auto bg">
+          <div class="card-body">
+          <h3 class="card-title mt-4">
+            {{ plat.nom|capitalize }}
+          </h3>
+          <p class="card-text bold mt-4 prix"> 
+            Prix : {{ plat.prix }} €
+          </p>
+          <p class="card-text bold my-4 txt"> 
+            {{ plat.description|capitalize }}
+          </p>
+          <p class="card-text desc"> 
+            Ingrédients : {{ plat.ingredients }}
+          </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+    {% for desssert in desserts %}
+      <div class="reservation-cards mb-3 mt-5 mx-auto filterDiv désserts">
+        <div class="card mb-3 pb-3 mx-auto bg">
+          <div class="card-body">
+          <h3 class="card-title mt-4">
+            {{ dessert.nom|capitalize }}
+          </h3>
+          <p class="card-text bold mt-4 prix"> 
+            Prix : {{ dessert.prix }} €
+          </p>
+          <p class="card-text bold my-4 txt"> 
+            {{ dessert.description|capitalize }}
+          </p>
+          <p class="card-text desc"> 
+            Ingrédients : {{ dessert.ingredients }}
+          </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
     </div>
-    <button class="bouton">Appuyer</button>
+
+    <button class="bouton btn-menu">
+      {% if app.user %}
+        <a href="{{path ('reservation')}}">Réserver une table</a>
+      {% else %}
+        <a href="{{path ('app_login')}}">Réserver une table</a>
+      {% endif %}
+    </button>
+
+    <hr class="my-5 w-50 mx-auto">
 
     <h2 class='text-center'>Nos menus</h2>
 
     {% for menus in menu %}
-      <div class="reservation-cards mb-3 mt-5 mx-auto">
+      <div class="reservation-cards mb-5 mt-5 mx-auto">
         <div class="card mb-3 pb-3">
           <div class="card-body">
           <h3 class="card-title mt-4">
@@ -57,7 +118,7 @@
       </div>
     {% endfor %}
     
-    <button class="bouton mb-5">
+    <button class="bouton btn-menu">
       {% if app.user %}
         <a href="{{path ('reservation')}}">Réserver une table</a>
       {% else %}
@@ -71,47 +132,69 @@
 
 {% block stylesheets %}
   <style>
-    .reservation-cards {
-      display: flex;
-      justify-content: center;
-      max-width: 700px;
-    }
-    .card {
-      width: 90%;
-      background-color: #DFDFDF !important;
-      border: 2px solid #FFEBB4 !important;
-    }
-    .reservation-cards h3 {
-      color: #906427;
-    }
-    .bold {
-      font-weight: bold !important;
-    }
-    a {
-      
-    }
-    .card-body h4 {
-      font-size: 1.2rem;
-    }
-
+  .titre {
+    margin-top: 8rem !important;
+    margin-bottom: 8rem !important;
+    font-size: 2.5rem;
+  }
+  .sous-titre {
+    font-size: 1.4rem;
+    margin: 1rem;
+  }
+  .reservation-cards {
+    display: flex;
+    justify-content: center;
+    max-width: 700px;
+  }
+  .reservation-cards {
+    display: flex;
+    justify-content: center;
+    max-width: 700px;
+    margin-left: 1rem;
+  }
+  .card {
+    width: 90%;
+    background-color: #DFDFDF !important;
+    border: 2px solid #FFEBB4 !important;
+  }
+  .reservation-cards h3 {
+    color: #906427;
+  }
+  .bold {
+    font-weight: bold !important;
+  }
+  .card-body h4 {
+    font-size: 1.2rem;
+  }
+  .prix {
+    color: #DFDFDF;
+  }
 .filterDiv {
-  float: left;
-  background-color: #2196F3;
   color: #ffffff;
-  width: 100px;
-  line-height: 100px;
+  width: 350px;
   text-align: center;
   margin: 2px;
   display: none;
+}
+.bg {
+  background-color: darkgrey !important; 
+}
+.txt {
+  font-size: 1.15rem !important;
+}
+.card-body {
+  background-color: transparent;
 }
 .show {
   display: block;
 }
 .container {
-  margin-top: 20px;
+  margin-top: 2rem;
   overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
-/* Style the buttons */
 .bton {
   border: none;
   outline: none;
@@ -122,9 +205,17 @@
 .bton:hover {
   background-color: #ddd;
 }
-.bton.acti {
-  background-color: #666;
-  color: white;
+.bton.activ {
+  background-color: #666 !important;
+  color: white !important;
+}
+.desc {
+  font-size: 0.9rem !important;
+  font-style: italic !important;
+  margin-bottom: 0.3rem !important;
+}
+.btn-menu {
+  margin-bottom: 6rem !important;
 }
   </style>
 {% endblock %}

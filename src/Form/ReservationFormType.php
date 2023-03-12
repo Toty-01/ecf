@@ -25,7 +25,6 @@ class ReservationFormType extends AbstractType
             ])
             ->add('date', options: [
                 'widget' => 'single_text',
-
                 'attr' => [
                 'class' => 'form-control w-75 mx-auto'
                 ]

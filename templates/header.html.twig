@@ -19,6 +19,13 @@
             </li>
           </ul>
           <ul class="navbar-nav ms-auto">
+          {% if app.user and is_granted('ROLE_ADMIN') %}
+            <li class="nav-item">
+              <button class='boutons'>
+                <a href="{{ path('app_admin') }}"  class="nav-link">Admin</a>
+              </button>
+            </li>
+          {% endif %}
           {% if app.user %}
             <li class="nav-item">
               <button class='boutons'>
