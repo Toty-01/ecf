@@ -119,7 +119,6 @@ class AdminController extends AbstractController
             return $this->redirectToRoute("app_admin");
         }
 
-                
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
             'horairesform' => $horairesform->createView(),
@@ -145,6 +144,9 @@ class AdminController extends AbstractController
         $em->remove($reservations);
         $em->flush();
         }
+
+        $this-> addFlash('success', "Réservation supprimée avec succès");
+        
         
         return $this->redirectToRoute('app_admin', [
             'reservations' => $reservations,
