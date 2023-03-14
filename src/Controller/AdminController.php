@@ -8,6 +8,7 @@ use App\Entity\Menu;
 use App\Entity\Plat;
 use App\Entity\Dessert;
 use App\Entity\Entree;
+use App\Entity\Reservation;
 use App\Entity\Restaurant;
 use App\Form\DessertFormType;
 use App\Form\EntreeFormType;
@@ -28,8 +29,10 @@ class AdminController extends AbstractController
     public function index(RestaurantRepository $restaurantRepository, EntityManagerInterface $em, HttpFoundationRequest $request, ReservationRepository $reservationRepository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        
-        $restaurant = new Restaurant();
+        $restaurantRepository = $em->getRepository(Restaurant::class);
+        $restaurant = $restaurantRepository->find(2);
+
+
    //     $galerie = new Galerie();
         $plat = new Plat();
         $dessert = new Dessert();
@@ -74,7 +77,7 @@ class AdminController extends AbstractController
             $em->persist($entree);
             $em->flush();
 
-            $this-> addFlash('success', "réservation éffectuée");
+            $this-> addFlash('success', "entrée ajoutée avec succès");
 
             return $this->redirectToRoute("app_admin");
         }
@@ -86,7 +89,7 @@ class AdminController extends AbstractController
             $em->persist($plat);
             $em->flush();
 
-            $this-> addFlash('success', "réservation éffectuée");
+            $this-> addFlash('success', "Plat ajouté avec succès");
 
             return $this->redirectToRoute("app_admin");
         }
@@ -98,8 +101,8 @@ class AdminController extends AbstractController
             $em->persist($dessert);
             $em->flush();
 
-            $this-> addFlash('success', "réservation éffectuée");
-
+            $this-> addFlash('success', "Déssert ajouté avec succès");
+            
             return $this->redirectToRoute("app_admin");
         }
 
@@ -111,11 +114,12 @@ class AdminController extends AbstractController
             $em->persist($menu);
             $em->flush();
 
-            $this-> addFlash('success', "réservation éffectuée");
-
+            $this-> addFlash('success', "Menu ajouté avec succès");
+            
             return $this->redirectToRoute("app_admin");
         }
 
+                
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
             'horairesform' => $horairesform->createView(),
@@ -130,4 +134,21 @@ class AdminController extends AbstractController
             ['ouv_midi' => 'asc'])
         ]);
     }
+
+    #[Route('/admin/{id}/delete', name:'delete')]
+    public function removeadmin(?int $id , EntityManagerInterface $em, ReservationRepository $reservationRepository): Response
+    {
+        $reservations = null;
+
+        if ($id !== null) {
+        $reservations = $reservationRepository->find($id);
+        $em->remove($reservations);
+        $em->flush();
+        }
+        
+        return $this->redirectToRoute('app_admin', [
+            'reservations' => $reservations,
+        ]);
+    }
+
 }

@@ -9,8 +9,8 @@
       <h4 class="mt-2 mb-4">Horaires</h4>
         <div class="horaires">
           <div class="jours">
-            <div>Mardi :</div>
-            <div>
+            <p>MARDI :</p>
+            <p>
               {% for restau in restaurant %}
                 {{ restau.ouvMidi }}
               {% endfor %} 
@@ -18,8 +18,8 @@
               {% for restau in restaurant %}
                 {{ restau.fermMidi }}
               {% endfor %}
-            </div>
-              <div>
+            </p>
+              <p>
                 {% for restau in restaurant %}
                   {{ restau.ouvSoir }}
                 {% endfor %} 
@@ -27,11 +27,11 @@
                 {% for restau in restaurant %}
                   {{ restau.fermSoir }}
                 {% endfor %}
-              </div>
+              </p>
           </div>
             <div class="jours">
-              <div>Mercredi :</div>
-              <div>
+              <p>MERCREDI :</p>
+              <p>
                 {% for restau in restaurant %}
                   {{ restau.ouvMidi }}
                 {% endfor %} 
@@ -39,8 +39,8 @@
                 {% for restau in restaurant %}
                   {{ restau.fermMidi }}
                 {% endfor %}
-              </div>
-              <div>
+              </p>
+              <p>
                 {% for restau in restaurant %}
                   {{ restau.ouvSoir }}
                 {% endfor %} 
@@ -48,11 +48,11 @@
                 {% for restau in restaurant %}
                   {{ restau.fermSoir }}
                 {% endfor %}
-              </div>
+              </p>
           </div>
             <div class="jours">
-              <div>Jeudi :</div>
-              <div> 
+              <p>JEUDI :</p>
+              <p> 
                 {% for restau in restaurant %}
                   {{ restau.ouvMidi }}
                 {% endfor %}
@@ -60,8 +60,8 @@
                 {% for restau in restaurant %}
                   {{ restau.fermMidi }}
                 {% endfor %}
-              </div>
-              <div>
+              </p>
+              <p>
                 {% for restau in restaurant %}
                   {{ restau.ouvSoir }}
                 {% endfor %} 
@@ -69,11 +69,11 @@
                 {% for restau in restaurant %}
                   {{ restau.fermSoir }}
                 {% endfor %}
-              </div>
+              </p>
           </div>
             <div class="jours">
-              <div>Vendredi :</div>
-              <div>
+              <p>VENDREDI :</p>
+              <p>
               {% for restau in restaurant %}
                 {{ restau.ouvMidi }}
               {% endfor %}
@@ -81,8 +81,8 @@
               {% for restau in restaurant %}
                 {{ restau.fermMidi }}
               {% endfor %}
-              </div>
-              <div>
+              </p>
+              <p>
                 {% for restau in restaurant %}
                   {{ restau.ouvSoir }}
                 {% endfor %} 
@@ -90,11 +90,11 @@
                 {% for restau in restaurant %}
                   {{ restau.fermSoir }}
                 {% endfor %}
-              </div>
+              </p>
           </div>
             <div class="jours">
-              <div>Samedi :</div>
-              <div>
+              <p>SAMEDI :</p>
+              <p>
               {% for restau in restaurant %}
                 {{ restau.ouvMidi }}
               {% endfor %} 
@@ -102,8 +102,8 @@
               {% for restau in restaurant %}
                 {{ restau.fermMidi }}
               {% endfor %}
-              </div>
-              <div>
+              </p>
+              <p>
                 {% for restau in restaurant %}
                   {{ restau.ouvSoir }}
                 {% endfor %} 
@@ -111,14 +111,15 @@
                 {% for restau in restaurant %}
                   {{ restau.fermSoir }}
                 {% endfor %}
-              </div>
+              </p>
           </div>
             <div class="jours">
-              <div class="text-center">Dimanche : </div>
-              <div>Fermé</div>
+              <p class="text-center">DIMANCHE : </p>
+              <p>Fermé</p>
           </div>
-          <div class="jours">
-            <div class="text-center">Lundi : Fermé</div>
+            <div class="jours">
+              <p class="text-center">LUNDI :</p>
+              <p>Fermé</p>
           </div>
         </div>
       </section>
@@ -169,7 +170,7 @@ h4 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 7rem;
+  width: 8rem;
   background-color: #DFDFDF;
   color: #392B1E;
   font-weight: 600;

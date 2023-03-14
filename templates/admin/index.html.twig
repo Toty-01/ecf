@@ -35,27 +35,37 @@
     <hr class="mb-5 w-50 mx-auto">
 
     <h3 class="mb-5">Réservations</h3>
+    <p><b>Pensez à supprimer les réservations passées</b></p>
 
+    <p class="mx-3 mb-4"><i>(Réservations rangées de la réservation la plus récente jusqu'à la plus lointaine)</i></p>
+
+    <div class="reservation-cards">
       {% for reservations in reservation %}
-      <div class="reservation-cards mb-3">
-      <div class="card mb-3 pb-3" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">
-          {{ reservations.id }} - {{ reservations.nom }}
-        </h5>
-        <p class="card-text">
-          Le {{ reservations.date|date('d-m-Y') }} à 
-          {{ reservations.heure|date('h:i') }}
-        <br>
-          Couverts : {{ reservations.couverts }}
-        <br>
-          Allergies : {{ reservations.allergie }}
-        </p>
-          <a href="" class="bouton">Supprimer</a>
+        <div class="card mb-3 mx-3  pb-3" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">
+            reservation n°{{ reservations.id }}
+          </h5>
+          <p>Nom : <b>{{ reservations.nom|upper }}</b></p>
+          <p class="card-text">
+            Le <b>{{ reservations.date|date('d-m-Y') }}</b>
+          </p>
+          <p>
+           à <b>{{ reservations.heure|date('h:i') }} pm</b>
+          </p>
+          <p>
+            Couverts :<b> {{ reservations.couverts }} </b>
+          </p>
+          <p>  
+            Allergies : {{ reservations.allergie }}
+          </p>
+            <a href="{{ path('delete', { 'id': reservations.id }) }}" class="bouton">Supprimer</a>
+          </div>
         </div>
-      </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
+
+
   {% endblock %}
         
 {% block stylesheets %}   
@@ -65,15 +75,18 @@
     justify-content: center;
     flex-wrap: wrap;
     width: auto;
+    justify-content: space-evenly;
+    gap: 2rem;
+    margin-bottom: 6rem !important;
   }
   .card {
     border: 2px solid grey !important;
     background-color: lightgrey !important;
+    justify-content: center;
     flex-wrap: wrap;
+    width: auto;
   }
   .card-body {
   }
 </style>
-
-
 {% endblock %}

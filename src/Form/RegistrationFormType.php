@@ -25,6 +25,9 @@ class RegistrationFormType extends AbstractType
                 'label' => 'E-mail'
             ])
             ->add('rgpdConsent', CheckboxType::class, [
+                'attr' => [
+                    'class' => 'm-4'
+                ],
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([

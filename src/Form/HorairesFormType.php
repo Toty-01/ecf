@@ -15,25 +15,21 @@ class HorairesFormType extends AbstractType
             ->add('ouv_midi', options: [
                 'attr' => [
                 'class' => 'form-control w-75 mx-auto',
-                'placeholder' => '12h',
                 ]
             ])
             ->add('ferm_midi', options: [
                 'attr' => [
                 'class' => 'form-control w-75 mx-auto',
-                'placeholder' => '15h',
                 ]
             ])
             ->add('ouv_soir', options: [
                 'attr' => [
                 'class' => 'form-control w-75 mx-auto',
-                'placeholder' => '19h',
                 ]
             ])
             ->add('ferm_soir', options: [
                 'attr' => [
                 'class' => 'form-control w-75 mx-auto',
-                'placeholder' => '22h',
                 ]
             ])
         ;
@@ -43,7 +39,6 @@ class HorairesFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Restaurant::class,
-            'method' => 'PUT',
         ]);
     }
 }

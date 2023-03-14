@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Reservation;
-use Doctrine\DBAL\Types\TimeType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -29,13 +29,13 @@ class ReservationFormType extends AbstractType
                 'class' => 'form-control w-75 mx-auto'
                 ]
             ])
-            ->add('heure',  options: [
+            ->add('heure', TimeType::class, [
+                'widget' => 'choice',
+                'hours' => [12, 13, 19, 20],
+                'minutes' => range(0, 45, 15),
                 'attr' => [
                 'class' => 'form-control w-75 mx-auto'
                 ],
-                'widget' => 'choice',
-                'hours' => range(12, 20, 1),
-                'minutes' => range(0, 45, 15)
             ])
             ->add('allergie', options: [
                 'attr' => [
