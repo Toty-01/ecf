@@ -19,8 +19,50 @@
 
     <hr class="mb-5 w-50 mx-auto">
 
+    <h3 class="mb-5">Supprimer entrées</h3>
+
+    <div class="reservation-cards">
+      {% for entrees in entree %}
+        <div class="card mb-3 mx-3  pb-3" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">
+            Entrée n°{{ entrees.id }}
+          </h5>
+          <p><b>{{ entrees.nom|upper }}</b></p>
+          <p>  
+            Prix : {{ entrees.prix }} €
+          </p>
+            <a href="{{ path('deleteentree', { 'id': entrees.id }) }}" class="bouton">Supprimer</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <hr class="mb-5 w-50 mx-auto">
+
     <h3 class="mb-5">Carte-Plats</h3>
     {% include "admin/_plat.form.html.twig" %}
+
+    <hr class="mb-5 w-50 mx-auto">
+
+    <h3 class="mb-5">Supprimer Plats</h3>
+    
+    <div class="reservation-cards">
+      {% for plats in plat %}
+        <div class="card mb-3 mx-3  pb-3" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">
+            Plat n°{{ plats.id }}
+          </h5>
+          <p><b>{{ plats.nom|upper }}</b></p>
+          <p>  
+            Prix : {{ plats.prix }} €
+          </p>
+            <a href="{{ path('deleteplat', { 'id': plats.id }) }}" class="bouton">Supprimer</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
 
     <hr class="mb-5 w-50 mx-auto">
 
@@ -29,8 +71,50 @@
 
     <hr class="mb-5 w-50 mx-auto">
 
+    <h3 class="mb-5">Supprimer Désserts</h3>
+    
+    <div class="reservation-cards">
+      {% for desserts in dessert %}
+        <div class="card mb-3 mx-3  pb-3" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">
+            Plat n°{{ desserts.id }}
+          </h5>
+          <p><b>{{ desserts.nom|upper }}</b></p>
+          <p>  
+            Prix : {{ desserts.prix }} €
+          </p>
+            <a href="{{ path('deletedessert', { 'id': desserts.id }) }}" class="bouton">Supprimer</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <hr class="mb-5 w-50 mx-auto">
+
     <h3 class="mb-5">Menu</h3>
     {% include "admin/_menu.form.html.twig" %}
+
+    <hr class="mb-5 w-50 mx-auto">
+
+    <h3 class="mb-5">Supprimer Désserts</h3>
+    
+    <div class="reservation-cards">
+      {% for menus in menu %}
+        <div class="card mb-3 mx-3  pb-3" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">
+            Menu n°{{ menus.id }}
+          </h5>
+          <p class="my-4"><b>{{ menus.nom|upper }}</b></p>
+          <p>  
+            Prix : {{ menus.prix }} €
+          </p>
+            <a href="{{ path('deletemenu', { 'id': menus.id }) }}" class="bouton">Supprimer</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
 
     <hr class="mb-5 w-50 mx-auto">
 

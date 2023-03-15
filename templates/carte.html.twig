@@ -1,9 +1,47 @@
 {% extends "index.html.twig" %}
 
   {% block body %}
+  
     <h1 class="titre">Carte</h1>
     
     <p class="sous-titre">Retrouvez ici notre carte, nos menus et tarifs</p>
+      <hr class="mb-5 w-50 mx-auto">
+      <h2 class='text-center my-5'>Notre carte</h2>
+
+     <div class="card mb-3 pb-5 pt-5 mx-auto bg">
+      <ol class="list-group">
+        <h3 class=" mb-3">Entrées</h3>
+    {% for entree in entrees %}
+        <li class="d-flex justify-content-between align-items-start">
+            <div class="fw-bold">
+              {{ entree.nom|upper }}
+            </div>
+          <span class="badge rounded-pill end">{{ entree.prix }} €</span>
+        </li>
+    {% endfor %}
+        <h3 class="mt-4 mb-3">Plats</h3>
+    {% for plat in plats %}
+        <li class="d-flex justify-content-between align-items-start">
+            <div class="fw-bold">
+            {{ plat.nom|upper }}
+            </div>
+          <span class="badge rounded-pill end">{{ plat.prix }} €</span>
+        </li>
+    {% endfor %}
+        <h3 class="mt-4 mb-3">Désserts</h3>
+    {% for dessert in desserts %}
+        <li class="d-flex justify-content-between align-items-start">
+            <div class="fw-bold">
+              {{ dessert.nom|upper }}
+            </div>
+          <span class="badge rounded-pill end">{{ dessert.prix }} €</span>
+        </li>
+      </ol>
+    {% endfor %}
+
+    </div>
+
+    
     <hr class="my-5 w-50 mx-auto">
     <h2 class='text-center my-5'>Nos plats</h2>
 
@@ -134,12 +172,22 @@
   <style>
   .titre {
     margin-top: 8rem !important;
-    margin-bottom: 8rem !important;
     font-size: 2.5rem;
   }
   .sous-titre {
     font-size: 1.4rem;
     margin: 1rem;
+  }
+  .fw-bold {
+    margin-left: 2rem !important;
+  }
+  .badge {
+    background-color: #906427 !important;
+    margin-right: 2rem !important;
+    padding-left: 0.8rem !important;
+    padding-right: 0.8rem !important;
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
   }
   .reservation-cards {
     display: flex;
@@ -216,6 +264,16 @@
 }
 .btn-menu {
   margin-bottom: 6rem !important;
+}
+@media screen and (max-width: 600px) {
+
+  .fw-bold {
+    margin-left: 0.4rem !important;
+  }
+  .badge {
+    margin-right: 0.4rem !important;
+
+  }
 }
   </style>
 {% endblock %}

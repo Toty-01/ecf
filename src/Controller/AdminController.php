@@ -15,6 +15,10 @@ use App\Form\EntreeFormType;
 use App\Form\HorairesFormType;
 use App\Form\MenuFormType;
 use App\Form\PlatFormType;
+use App\Repository\DessertRepository;
+use App\Repository\EntreeRepository;
+use App\Repository\MenuRepository;
+use App\Repository\PlatRepository;
 use App\Repository\ReservationRepository;
 use App\Repository\RestaurantRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -26,9 +30,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     #[Route('/admin', name: 'app_admin')]
-    public function index(RestaurantRepository $restaurantRepository, EntityManagerInterface $em, HttpFoundationRequest $request, ReservationRepository $reservationRepository): Response
+    public function index(RestaurantRepository $restaurantRepository, EntityManagerInterface $em, HttpFoundationRequest $request, ReservationRepository $reservationRepository,  MenuRepository $menurepository, EntreeRepository $entreeRepository, PlatRepository $platRepository, DessertRepository $dessertRepository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $restaurantRepository = $em->getRepository(Restaurant::class);
         $restaurant = $restaurantRepository->find(2);
 
@@ -127,6 +132,14 @@ class AdminController extends AbstractController
             'platform' => $platform->createView(),
             'menuform' => $menuform->createView(),
  //           'galerieform' => $galerieform->createView(),
+            'entree' => $entreeRepository->findBy([],
+            ['id' => 'asc']),
+            'plat' => $platRepository->findBy([],
+            ['id' => 'asc']),
+            'dessert' => $dessertRepository->findBy([],
+            ['id' => 'asc']),
+            'menu' => $menurepository->findBy([],
+            ['id' => 'asc']),
             'reservation' => $reservationRepository->findBy([],
             ['date' => 'asc']),
             'restaurant' => $restaurantRepository->findBy([],
@@ -145,12 +158,83 @@ class AdminController extends AbstractController
         $em->flush();
         }
 
+
         $this-> addFlash('success', "Réservation supprimée avec succès");
         
         
         return $this->redirectToRoute('app_admin', [
             'reservations' => $reservations,
-        ]);
+        ]); 
+    }    
+
+    #[Route('/admin/{id}/deleteentree', name:'deleteentree')]
+    public function removeentree(?int $id , EntityManagerInterface $em, EntreeRepository $entreeRepository): Response
+    {
+
+        $entrees = null;
+        if ($id !== null) {
+        $entrees = $entreeRepository->find($id);
+        $em->remove($entrees);
+        $em->flush();
+        }
+
+        $this-> addFlash('success', "Entrée supprimée avec succès");
+        
+        return $this->redirectToRoute('app_admin', [
+            'entrees' => $entrees,
+        ]); 
+    }
+    #[Route('/admin/{id}/deleteplat', name:'deleteplat')]
+    public function removeplat(?int $id , EntityManagerInterface $em, PlatRepository $platRepository): Response
+    {
+
+        $plats = null;
+        if ($id !== null) {
+        $plats = $platRepository->find($id);
+        $em->remove($plats);
+        $em->flush();
+        }
+
+        $this-> addFlash('success', "Plat supprimée avec succès");
+        
+        return $this->redirectToRoute('app_admin', [
+            'plats' => $plats,
+        ]); 
+    }
+    #[Route('/admin/{id}/deletedessert', name:'deletedessert')]
+    public function removedessert(?int $id , EntityManagerInterface $em, DessertRepository $dessertRepository): Response
+    {
+
+        $desserts = null;
+        if ($id !== null) {
+        $desserts = $dessertRepository->find($id);
+        $em->remove($desserts);
+        $em->flush();
+        }
+
+        $this-> addFlash('success', "Déssert supprimé avec succès");
+        
+        return $this->redirectToRoute('app_admin', [
+            'desserts' => $desserts,
+        ]); 
+    }
+
+    #[Route('/admin/{id}/deletemenu', name:'deletemenu')]
+    public function removemenu(?int $id , EntityManagerInterface $em, MenuRepository $menuRepository): Response
+    {
+
+        $menus = null;
+        if ($id !== null) {
+        $menus = $menuRepository->find($id);
+        $em->remove($menus);
+        $em->flush();
+        }
+
+        $this-> addFlash('success', "Menu supprimé avec succès");
+        
+        return $this->redirectToRoute('app_admin', [
+            'menus' => $menus,
+        ]); 
     }
 
 }

@@ -23,9 +23,11 @@
         {% include "_flash.html.twig" %}
 
         {% block body %}
-         
+         <div class="top">
           <h1 class="titre">Le Quai Antique</h1>
+          <br>
           <p class="sous-titre">Bienvenue sur notre site</p>
+         </div>
 
           <div class="slider">
           <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
@@ -131,7 +133,6 @@ button {
   border: 1px solid grey;
 }
 body {
-  min-height: 100vh;
   text-align: center;
 }
 button:hover {
@@ -148,14 +149,31 @@ button:hover {
   height: 20rem;
 }
  h1 {
-  margin-top: 9rem !important;
-  margin-bottom: 5rem;
+  padding: 1rem 0.8rem !important;
+  margin-top: 2rem !important;
+  margin-bottom: 6rem !important;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1.5rem;
+  -webkit-backdrop-filter: blur(40px); /* assure la compatibilité avec safari */
+  backdrop-filter: blur(40px);
+  font-weight: bold !important;
+ }
+ .top {
+  background: url({{ asset('images/res.jpg') }}) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 9rem !important;
  }
  .sous-titre {
-  margin-top: 8rem !important;
-  margin-bottom: 8rem;
+  padding-top: 4rem !important;
+  padding-bottom: 8rem;
   font-size: 1.8rem;
   font-weight: 400 !important;
+  margin-bottom: 0 !important;
  }
  .active {
   color: white;
