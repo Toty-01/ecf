@@ -1,0 +1,161 @@
+{% block header %}
+    <nav class="navbar navbar-expand-lg py-0">
+      <div class="container-fluid">
+        <a class="navbar-brand ancre-logo" href="{{path ('home')}}">
+          <img class="logo" src="images/logo.png" alt="Image Description">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">   
+            <i class="fas fa-bars"></i>
+        </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link {% if app.request.attributes.get('_route') == 'home' %}active{% endif %}" href="{{path ('home')}}">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if app.request.attributes.get('_route') == 'carte' %}active{% endif %}" href="{{path ('carte')}}">Carte</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+          {% if app.user and is_granted('ROLE_ADMIN') %}
+            <li class="nav-item">
+              <button class='boutons'>
+                <a href="{{ path('app_admin') }}"  class="nav-link">Admin</a>
+              </button>
+            </li>
+          {% endif %}
+          {% if app.user %}
+            <li class="nav-item">
+              <button class='boutons'>
+                <a class="nav-link" href="{{path ('app_logout')}}">Déconnexion</a>
+              </button>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <button class='boutons'>
+                <a class="nav-link logout" href="{{path ('app_login')}}">Connexion / inscription</a>
+              </button>
+            </li>
+          {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+{% endblock %}
+
+<style>
+html, *, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  /* Palette */
+  --first: #B7AC98;
+  --second: #392B1E;
+  --third: #906427;
+  --fourth: #5A5A5A;
+  --fifth: #DFDFDF;
+};
+ nav {
+  display: flex;
+  justify-content: space-evenly;
+  height: auto;
+  align-items: center;
+  background-color: #5A5A5A !important;
+ }
+ .navbar {
+  background-color: #5A5A5A !important;
+ }
+ .navbar-nav {
+  display: flex;
+ }
+ #navbarNav.collapse.navbar-collapse {
+  margin-left: 4rem;
+ }
+ .nav-item {
+  justify-content: center;
+  align-items: center;
+ }
+ .nav-link {
+  color: #DFDFDF !important;
+  justify-content: center;
+  font-weight: 600;
+  align-items: center;
+  margin-left: 1rem;
+  margin-right: auto;
+  border-radius: 1rem;
+ }
+ .nav-link:hover {
+  transition: 1s;
+  color: #B7AC98 !important;
+ }
+ h1 {
+  margin: 3rem;
+ }
+ .active {
+  color: #B7AC98 !important;
+  font-weight: 600;
+ }
+ .logo {
+  width: 5rem;
+  border-radius: 50%;
+  border: 3px solid #906427;
+}
+.boutons {
+  width: auto;
+  height: auto;
+  padding: 0; 
+  margin: 0;
+  background-color: #906427;
+  border: none;
+  margin-right: 2rem;
+}
+.boutons a {
+  margin-left: 0;
+}
+.boutons:hover {
+  background-color: #705530;
+}
+.fa-bars {
+  margin-top: 0.2rem;
+  color: #DFDFDF !important;
+}
+.navbar-toggler {
+  color: #906427;
+}
+@media screen and (max-width: 920px) {
+ #navbarNav.collapse.navbar-collapse {
+  justify-content: space-evenly;
+  margin-left: auto;
+  justify-content: center;
+ }
+ button.navbar-toggler {
+  margin-top: 0;
+  margin-bottom: 0;
+ }
+ .navbar-nav {
+  display: flex;
+ }
+ .nav-link {
+  text-align: center;
+  justify-content: center;
+ }
+ .nav-link:last-child {
+  padding-bottom: 3rem;
+ }
+ .boutons {
+  margin-bottom: 3rem;
+  margin-left: 3rem;
+  list-style-type: none;
+ }
+ .boutons a {
+  padding-bottom: 0.6rem !important;
+  padding-top: 0.6rem !important;
+  padding-left: 0.9rem !important;
+  padding-right: 0.9rem !important;
+ }
+}
+</style> 

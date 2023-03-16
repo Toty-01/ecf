@@ -1,0 +1,279 @@
+{% extends "index.html.twig" %}
+
+  {% block body %}
+  
+    <h1 class="titre">Carte</h1>
+    
+    <p class="sous-titre">Retrouvez ici notre carte, nos menus et tarifs</p>
+      <hr class="mb-5 w-50 mx-auto">
+      <h2 class='text-center my-5'>Notre carte</h2>
+
+     <div class="card mb-3 pb-5 pt-5 mx-auto bg">
+      <ol class="list-group">
+        <h3 class=" mb-3">Entrées</h3>
+    {% for entree in entrees %}
+        <li class="d-flex justify-content-between align-items-start">
+            <div class="fw-bold">
+              {{ entree.nom|upper }}
+            </div>
+          <span class="badge rounded-pill end">{{ entree.prix }} €</span>
+        </li>
+    {% endfor %}
+        <h3 class="mt-4 mb-3">Plats</h3>
+    {% for plat in plats %}
+        <li class="d-flex justify-content-between align-items-start">
+            <div class="fw-bold">
+            {{ plat.nom|upper }}
+            </div>
+          <span class="badge rounded-pill end">{{ plat.prix }} €</span>
+        </li>
+    {% endfor %}
+        <h3 class="mt-4 mb-3">Désserts</h3>
+    {% for dessert in desserts %}
+        <li class="d-flex justify-content-between align-items-start">
+            <div class="fw-bold">
+              {{ dessert.nom|upper }}
+            </div>
+          <span class="badge rounded-pill end">{{ dessert.prix }} €</span>
+        </li>
+      </ol>
+    {% endfor %}
+
+    </div>
+
+    
+    <hr class="my-5 w-50 mx-auto">
+    <h2 class='text-center my-5'>Nos plats</h2>
+
+    <div id="myBtnContainer">
+      <button class="bton activ" onclick="filterSelection('all')"> Voir tout</button>
+      <button class="bton" onclick="filterSelection('entrées')"> Entrées</button>
+      <button class="bton" onclick="filterSelection('plats')"> Plats</button>
+      <button class="bton" onclick="filterSelection('désserts')"> Désserts</button>
+    </div>
+
+    <div class="container">    
+    {% for entree in entrees %}
+      <div class="reservation-cards mb-3 mt-5 mx-auto filterDiv entrées">
+        <div class="card mb-3 pb-3 mx-auto bg">
+          <div class="card-body">
+          <h3 class="card-title mt-4">
+            {{ entree.nom|capitalize }}
+          </h3>
+          <p class="card-text bold mt-4 prix"> 
+            Prix : {{ entree.prix }} €
+          </p>
+          <p class="card-text bold my-4 txt"> 
+            {{ entree.description|capitalize }}
+          </p>
+          <p class="card-text"> 
+          </p>
+          <p class="card-text  desc">
+            Ingrédients : {{ entree.ingredients }}
+          </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+    {% for plat in plats %}
+      <div class="reservation-cards mb-3 mt-5 mx-auto filterDiv plats">
+        <div class="card mb-3 pb-3 mx-auto bg">
+          <div class="card-body">
+          <h3 class="card-title mt-4">
+            {{ plat.nom|capitalize }}
+          </h3>
+          <p class="card-text bold mt-4 prix"> 
+            Prix : {{ plat.prix }} €
+          </p>
+          <p class="card-text bold my-4 txt"> 
+            {{ plat.description|capitalize }}
+          </p>
+          <p class="card-text desc"> 
+            Ingrédients : {{ plat.ingredients }}
+          </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+    {% for dessert in desserts %}
+      <div class="reservation-cards mb-3 mt-5 mx-auto filterDiv désserts">
+        <div class="card mb-3 pb-3 mx-auto bg">
+          <div class="card-body">
+          <h3 class="card-title mt-4">
+            {{ dessert.nom|capitalize }}
+          </h3>
+          <p class="card-text bold mt-4 prix"> 
+            Prix : {{ dessert.prix }} €
+          </p>
+          <p class="card-text bold my-4 txt"> 
+            {{ dessert.description|capitalize }}
+          </p>
+          <p class="card-text desc"> 
+            Ingrédients : {{ dessert.ingredients }}
+          </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+    </div>
+
+    <button class="bouton btn-menu">
+      {% if app.user %}
+        <a href="{{path ('reservation')}}">Réserver une table</a>
+      {% else %}
+        <a href="{{path ('app_login')}}">Réserver une table</a>
+      {% endif %}
+    </button>
+
+    <hr class="my-5 w-50 mx-auto">
+
+    <h2 class='text-center'>Nos menus</h2>
+
+    {% for menus in menu %}
+      <div class="reservation-cards mb-5 mt-5 mx-auto">
+        <div class="card mb-3 pb-3">
+          <div class="card-body">
+          <h3 class="card-title mt-4">
+            {{ menus.nom }}
+          </h3>
+          <h4 class="mt-4">
+            {{ menus.formule|upper }}
+          </h4>
+          <p class="card-text"> 
+            ( {{ menus.validite }} )
+          </p>
+          <p class="card-text bold">
+            {{ menus.description }}
+          </p>
+          <p class="card-text mt-4 bold mb-4">
+            Prix : {{ menus.prix }} €
+          </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    
+    <button class="bouton btn-menu">
+      {% if app.user %}
+        <a href="{{path ('reservation')}}">Réserver une table</a>
+      {% else %}
+        <a href="{{path ('app_login')}}">Réserver une table</a>
+      {% endif %}
+    </button>
+
+
+  {% endblock %}
+           
+
+{% block stylesheets %}
+  <style>
+  .titre {
+    margin-top: 8rem !important;
+    font-size: 2.5rem;
+  }
+  .sous-titre {
+    font-size: 1.4rem;
+    margin: 1rem;
+  }
+  .fw-bold {
+    margin-left: 2rem !important;
+  }
+  .badge {
+    background-color: #906427 !important;
+    margin-right: 2rem !important;
+    padding-left: 0.8rem !important;
+    padding-right: 0.8rem !important;
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+  }
+  .reservation-cards {
+    display: flex;
+    justify-content: center;
+    max-width: 700px;
+  }
+  .reservation-cards {
+    display: flex;
+    justify-content: center;
+    max-width: 700px;
+    margin-left: 1rem;
+  }
+  .card {
+    width: 90%;
+    background-color: #DFDFDF !important;
+    border: 2px solid #FFEBB4 !important;
+  }
+  .reservation-cards h3 {
+    color: #906427;
+  }
+  .bold {
+    font-weight: bold !important;
+  }
+  .card-body h4 {
+    font-size: 1.2rem;
+  }
+  .prix {
+    color: #DFDFDF;
+  }
+.filterDiv {
+  color: #ffffff;
+  width: 350px;
+  text-align: center;
+  margin: 2px;
+  display: none;
+}
+.bg {
+  background-color: darkgrey !important; 
+}
+.txt {
+  font-size: 1.15rem !important;
+}
+.card-body {
+  background-color: transparent;
+}
+.show {
+  display: block;
+}
+.container {
+  margin-top: 2rem;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.bton {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+.bton:hover {
+  background-color: #ddd;
+}
+.bton.activ {
+  background-color: #666 !important;
+  color: white !important;
+}
+.desc {
+  font-size: 0.9rem !important;
+  font-style: italic !important;
+  margin-bottom: 0.3rem !important;
+}
+.btn-menu {
+  margin-bottom: 6rem !important;
+}
+@media screen and (max-width: 600px) {
+
+  .fw-bold {
+    margin-left: 0.4rem !important;
+  }
+  .badge {
+    margin-right: 0.4rem !important;
+
+  }
+}
+  </style>
+{% endblock %}

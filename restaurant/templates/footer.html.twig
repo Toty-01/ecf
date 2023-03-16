@@ -1,0 +1,189 @@
+{% block footer %}
+  <footer>
+    <div class="foot">
+      <div class="contact">
+        <h4 class="pt-4">Nous Appeler</h4>
+        <div class="text-center pt-4 pb-4 phone">Téléphone : <b style="color:#b9853d;">0600112233</b></div>
+      </div>
+      <section>
+      <h4 class="mt-2 mb-4">Horaires</h4>
+        <div class="horaires">
+          <div class="jours">
+            <p>MARDI :</p>
+            <p>
+              {% for restau in restaurant %}
+                {{ restau.ouvMidi }}
+              {% endfor %} 
+               - 
+              {% for restau in restaurant %}
+                {{ restau.fermMidi }}
+              {% endfor %}
+            </p>
+              <p>
+                {% for restau in restaurant %}
+                  {{ restau.ouvSoir }}
+                {% endfor %} 
+                - 
+                {% for restau in restaurant %}
+                  {{ restau.fermSoir }}
+                {% endfor %}
+              </p>
+          </div>
+            <div class="jours">
+              <p>MERCREDI :</p>
+              <p>
+                {% for restau in restaurant %}
+                  {{ restau.ouvMidi }}
+                {% endfor %} 
+                - 
+                {% for restau in restaurant %}
+                  {{ restau.fermMidi }}
+                {% endfor %}
+              </p>
+              <p>
+                {% for restau in restaurant %}
+                  {{ restau.ouvSoir }}
+                {% endfor %} 
+                - 
+                {% for restau in restaurant %}
+                  {{ restau.fermSoir }}
+                {% endfor %}
+              </p>
+          </div>
+            <div class="jours">
+              <p>JEUDI :</p>
+              <p> 
+                {% for restau in restaurant %}
+                  {{ restau.ouvMidi }}
+                {% endfor %}
+                - 
+                {% for restau in restaurant %}
+                  {{ restau.fermMidi }}
+                {% endfor %}
+              </p>
+              <p>
+                {% for restau in restaurant %}
+                  {{ restau.ouvSoir }}
+                {% endfor %} 
+                - 
+                {% for restau in restaurant %}
+                  {{ restau.fermSoir }}
+                {% endfor %}
+              </p>
+          </div>
+            <div class="jours">
+              <p>VENDREDI :</p>
+              <p>
+              {% for restau in restaurant %}
+                {{ restau.ouvMidi }}
+              {% endfor %}
+               - 
+              {% for restau in restaurant %}
+                {{ restau.fermMidi }}
+              {% endfor %}
+              </p>
+              <p>
+                {% for restau in restaurant %}
+                  {{ restau.ouvSoir }}
+                {% endfor %} 
+                - 
+                {% for restau in restaurant %}
+                  {{ restau.fermSoir }}
+                {% endfor %}
+              </p>
+          </div>
+            <div class="jours">
+              <p>SAMEDI :</p>
+              <p>
+              {% for restau in restaurant %}
+                {{ restau.ouvMidi }}
+              {% endfor %} 
+              - 
+              {% for restau in restaurant %}
+                {{ restau.fermMidi }}
+              {% endfor %}
+              </p>
+              <p>
+                {% for restau in restaurant %}
+                  {{ restau.ouvSoir }}
+                {% endfor %} 
+                - 
+                {% for restau in restaurant %}
+                  {{ restau.fermSoir }}
+                {% endfor %}
+              </p>
+          </div>
+            <div class="jours">
+              <p class="text-center">DIMANCHE : </p>
+              <p>Fermé</p>
+          </div>
+            <div class="jours">
+              <p class="text-center">LUNDI :</p>
+              <p>Fermé</p>
+          </div>
+        </div>
+      </section>
+      <div class="copyright text-center mt-3 pb-5">© Site créé et designé par Anthony Cauche</div>
+    </div>
+  </footer>
+{% endblock %}
+
+<style>
+*, html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  /* Palette */
+  --first: #B7AC98;
+  --second: #392B1E;
+  --third: #906427;
+  --fourth: #5A5A5A;
+  --fifth: #DFDFDF;
+  --sixth: #b9853d;
+};
+footer {
+  margin: 0;
+  margin-bottom: 0 !important;
+}
+.foot {
+  background-color: var(--fourth);
+  color: #DFDFDF;
+}
+section {
+  color: #DFDFDF;
+  padding: 1rem;
+}
+h4 {
+  color: #b9853d;
+  text-align: center;
+}
+.horaires {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: space-around;
+  gap: 1rem;
+}
+.jours {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 8rem;
+  background-color: #DFDFDF;
+  color: #392B1E;
+  font-weight: 600;
+  border-radius: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  align-items: center;
+  font-size: 1.1rem;
+}
+.copyright {
+  font-size: 1rem;
+}
+.phone {
+  font-size: 1.4rem;
+}
+</style> 

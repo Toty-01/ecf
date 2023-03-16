@@ -1,0 +1,177 @@
+{% extends "index.html.twig" %}
+
+  {% block body %}
+    <h1 class="mt-5">Espace d'administration</h1>
+    <h2 class="mb-5">Bienvenue sur la page d'administration<h2>
+    
+    <h3 class="mb-5">Horaires</h3>
+    {% include "admin/_form.html.twig" %}
+    
+   {# <hr class="mb-5 w-50 mx-auto">
+    
+    <h3 class="mb-5">galerie</h3>
+    {% include "admin/galerie_form.html.twig" %}#}
+    
+    <hr class="mb-5 w-50 mx-auto">
+
+    <h3 class="mb-5">Carte-Entrées</h3>
+    {% include "admin/_entree.form.html.twig" %}
+
+    <hr class="mb-5 w-50 mx-auto">
+
+    <h3 class="mb-5">Supprimer entrées</h3>
+
+    <div class="reservation-cards">
+      {% for entrees in entree %}
+        <div class="card mb-3 mx-3  pb-3" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">
+            Entrée n°{{ entrees.id }}
+          </h5>
+          <p><b>{{ entrees.nom|upper }}</b></p>
+          <p>  
+            Prix : {{ entrees.prix }} €
+          </p>
+            <a href="{{ path('deleteentree', { 'id': entrees.id }) }}" class="bouton">Supprimer</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <hr class="mb-5 w-50 mx-auto">
+
+    <h3 class="mb-5">Carte-Plats</h3>
+    {% include "admin/_plat.form.html.twig" %}
+
+    <hr class="mb-5 w-50 mx-auto">
+
+    <h3 class="mb-5">Supprimer Plats</h3>
+    
+    <div class="reservation-cards">
+      {% for plats in plat %}
+        <div class="card mb-3 mx-3  pb-3" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">
+            Plat n°{{ plats.id }}
+          </h5>
+          <p><b>{{ plats.nom|upper }}</b></p>
+          <p>  
+            Prix : {{ plats.prix }} €
+          </p>
+            <a href="{{ path('deleteplat', { 'id': plats.id }) }}" class="bouton">Supprimer</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <hr class="mb-5 w-50 mx-auto">
+
+    <h3 class="mb-5">Carte-Désserts</h3>
+    {% include "admin/_dessert.form.html.twig" %}
+
+    <hr class="mb-5 w-50 mx-auto">
+
+    <h3 class="mb-5">Supprimer Désserts</h3>
+    
+    <div class="reservation-cards">
+      {% for desserts in dessert %}
+        <div class="card mb-3 mx-3  pb-3" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">
+            Plat n°{{ desserts.id }}
+          </h5>
+          <p><b>{{ desserts.nom|upper }}</b></p>
+          <p>  
+            Prix : {{ desserts.prix }} €
+          </p>
+            <a href="{{ path('deletedessert', { 'id': desserts.id }) }}" class="bouton">Supprimer</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <hr class="mb-5 w-50 mx-auto">
+
+    <h3 class="mb-5">Menu</h3>
+    {% include "admin/_menu.form.html.twig" %}
+
+    <hr class="mb-5 w-50 mx-auto">
+
+    <h3 class="mb-5">Supprimer Désserts</h3>
+    
+    <div class="reservation-cards">
+      {% for menus in menu %}
+        <div class="card mb-3 mx-3  pb-3" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">
+            Menu n°{{ menus.id }}
+          </h5>
+          <p class="my-4"><b>{{ menus.nom|upper }}</b></p>
+          <p>  
+            Prix : {{ menus.prix }} €
+          </p>
+            <a href="{{ path('deletemenu', { 'id': menus.id }) }}" class="bouton">Supprimer</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <hr class="mb-5 w-50 mx-auto">
+
+    <h3 class="mb-5">Réservations</h3>
+    <p><b>Pensez à supprimer les réservations passées</b></p>
+
+    <p class="mx-3 mb-4"><i>(Réservations rangées de la réservation la plus récente jusqu'à la plus lointaine)</i></p>
+
+    <div class="reservation-cards">
+      {% for reservations in reservation %}
+        <div class="card mb-3 mx-3  pb-3" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">
+            reservation n°{{ reservations.id }}
+          </h5>
+          <p>Nom : <b>{{ reservations.nom|upper }}</b></p>
+          <p class="card-text">
+            Le <b>{{ reservations.date|date('d-m-Y') }}</b>
+          </p>
+          <p>
+           à <b>{{ reservations.heure|date('h:i') }} pm</b>
+          </p>
+          <p>
+            Couverts :<b> {{ reservations.couverts }} </b>
+          </p>
+          <p>  
+            Allergies : {{ reservations.allergie }}
+          </p>
+            <a href="{{ path('delete', { 'id': reservations.id }) }}" class="bouton">Supprimer</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+
+  {% endblock %}
+        
+{% block stylesheets %}   
+<style>
+  .reservation-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: auto;
+    justify-content: space-evenly;
+    gap: 2rem;
+    margin-bottom: 6rem !important;
+    margin-top: 4rem !important;
+  }
+  .card {
+    border: 2px solid grey !important;
+    background-color: lightgrey !important;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: auto;
+  }
+  .card-body {
+  }
+</style>
+{% endblock %}

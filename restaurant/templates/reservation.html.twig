@@ -1,0 +1,25 @@
+{% extends "index.html.twig" %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1 class="text-center">Réservation</h1>
+{% include "_reservation.form.html.twig" %}
+</div>
+
+
+{% endblock %}
+
+
+{% block stylesheets %}
+  <style>
+    select {
+        color: white !important;
+        background-color: grey !important;
+    }
+    
+    select:hover {
+        cursor: pointer;
+    }
+  </style>
+{% endblock %}
