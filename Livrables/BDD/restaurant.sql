@@ -54,7 +54,7 @@ CREATE TABLE `users` (
   `password` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
+/*-- --------------------------------------------------------
 
 -- table `galerie`
 
@@ -64,42 +64,54 @@ CREATE TABLE `galerie` (
   `titre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
+-- --------------------------------------------------------*/
 
 -- table `menu`
 
 CREATE TABLE `menu` (
-  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `nom` varchar(250) NOT NULL,
-  ADD FOREIGN KEY (formule_id)
-  REFERENCES formule (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
--- table `formule`
-
-CREATE TABLE `formule` (
-  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `nom` varchar(250) NOT NULL,
-  `validite` varchar(250) NOT NULL,
-  `description` varchar(250) NOT NULL,
-  ADD FOREIGN KEY (menu_id)
-  REFERENCES menu (id)
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `formule` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `validite` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prix` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 -- table `plats`
 
-CREATE TABLE `plats` (
-  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `nom` varchar(250) NOT NULL,
-  `prix` float NOT NULL,
-  `description` varchar(250) NOT NULL,
-  ADD FOREIGN KEY (ingrédients_id)
-  REFERENCES ingrédients (id)
+CREATE TABLE `entrée` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prix` double NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ingredients` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+-- table `plat`
+
+CREATE TABLE `plat` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prix` double NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ingredients` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+-- table `dessert`
+
+CREATE TABLE `dessert` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prix` double NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ingredients` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -113,5 +125,3 @@ CREATE TABLE `ingrédients` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 COMMIT;
-
--- J'ai modifié ma base de donnée tout au long du projet et elle n'est pas du tout comme cela au final
