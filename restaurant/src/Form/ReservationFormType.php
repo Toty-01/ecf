@@ -20,6 +20,8 @@ class ReservationFormType extends AbstractType
             ])
             ->add('couverts', options: [
                 'attr' => [
+                'min' => 1, 
+                'max' => 20,
                 'class' => 'form-control w-75 mx-auto',
                 ]
             ])
